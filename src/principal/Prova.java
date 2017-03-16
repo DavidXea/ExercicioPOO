@@ -8,6 +8,7 @@ package principal;
 /**
  *
  * @author david
+ * OLA MUNDO MALEFICO
  */
 public class Prova {
     
@@ -15,8 +16,8 @@ public class Prova {
     private int peso;
     private String local;
     private String data;
-    public Objetiva[] ListaObjetiva;
-    public Discursiva[] ListaDiscursiva;
+    private Objetiva[] ListaObjetiva = new Objetiva[10];
+    private Discursiva[] ListaDiscursiva = new Discursiva[10];
     
     
     /**
@@ -43,6 +44,19 @@ public class Prova {
         return impressao;
     }
     
+    public void setListaObjetiva(int indice, Objetiva[] novaLista){
+        this.ListaObjetiva[indice] = novaLista;
+    }
+    public Objetiva getListaObjetiva(int indice){
+        return this.ListaObjetiva[indice];
+    }
+    
+    public void setListaDiscursiva(Discursiva[] novaLista){
+        this.ListaDiscursiva = novaLista;
+    }
+    public Discursiva getListaDiscursiva(int indice){
+        return this.ListaDiscursiva[indice];
+    }
     
     public void setNomeDisciplina(String novoNome){
         this.nomeDisciplina = novoNome;
