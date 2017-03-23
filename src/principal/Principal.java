@@ -15,9 +15,8 @@ public class Principal {
     public static void main(String[] args){
         
         Scanner in = new Scanner(System.in);
+        
         Prova m1 = new Prova("POO");
-        Discursiva dis = new Discursiva();
-  
         
         
         System.out.print("Digite as informações da prova : \nData : ");
@@ -29,39 +28,51 @@ public class Principal {
         m1.setLocal(local);
         
         System.out.print("Peso : ") ;
-        int peso = in.nextInt();
+        
+        int peso = Integer.parseInt(in.nextLine());
         m1.setPeso(peso);
         
-        System.out.print("Digite a quantidade de questões discursivas : ");
-        int qtdDis = in.nextInt();
-        System.out.print("Digite as informações das questões discursivas : \n\n");
-        
-        
-        System.out.print("Digite os criterios de avaliação : ");
-        String criterio = in.nextLine();
-        m1.ListaDiscursiva[0].setCriterioDeAvaliacao(criterio);
+        System.out.print("\nDigite a quantidade de questões discursivas : ");
+        int qtdDis = Integer.parseInt(in.nextLine());
+        m1.ListaDiscursiva = new Discursiva[qtdDis];
+
+        System.out.print("\nDigite as informações das questões discursivas : \n\n");
         
         for(int i=0; i<qtdDis ; i++){
-            System.out.print("\nQuestão "+ i+1 +": \nPergunta : ");
+            m1.ListaDiscursiva[i] = new Discursiva();
+            System.out.print("Digite os criterios de avaliação : ");
+            String criterio = in.nextLine();
+            m1.ListaDiscursiva[i].setCriterioDeAvaliacao(criterio);
+            System.out.print("\nQuestão "+ "("+(i+1)+")"+": \nPergunta : ");
             String pergunta = in.nextLine();
             m1.ListaDiscursiva[i].setPergunta(pergunta);
             
-            System.out.print("\nPeso : ");
-            double pes = in.nextDouble();
+            System.out.print("Peso : ");
+            
+            double pes = Double.parseDouble(in.nextLine());
             m1.ListaDiscursiva[i].setPeso(pes);
         }
         
-        String[] ops = new String[4];
-        for(int i=0; i<qtdDis ; i++){
+        
+        System.out.print("Digite a quantidade de questoes Objetivas : ");
+        int qtdObj = Integer.parseInt(in.nextLine());
+        m1.ListaObjetiva = new Objetiva[qtdDis];
+        
+        for(int i=0; i<qtdObj ; i++){
             
-            System.out.print("Questão "+ i+1 +": \nPergunta : ");
+            m1.ListaObjetiva[i] = new Objetiva();
+            System.out.print("Questão "+ (i+1) +": \nPergunta : ");
             String pergunta = in.nextLine();
             m1.ListaObjetiva[i].setPergunta(pergunta);
             
+            String[] ops = new String[5];
+            
             for(int j=0; j<5 ; j++){
-                ops[j] = in.nextLine();
-                m1.ListaObjetiva[j].setOpcao(ops);
+                System.out.print("Opção "+j+" : ");
+                ops[j] =  in.nextLine();
             }
+            
+            m1.ListaObjetiva[i].setOpcao(ops);
 
             System.out.print("\nPeso : ");
             double pes = in.nextDouble();
@@ -75,7 +86,7 @@ public class Principal {
         System.out.print(m1.obtemProvaImpressao());
         
         
-        System.out.print(m1.obtemDetalhes());
+        //System.out.print(m1.obtemDetalhes());
        
     }
     

@@ -16,9 +16,8 @@ public class Prova {
     private int peso;
     private String local;
     private String data;
-    private Objetiva[] ListaObjetiva = new Objetiva[10];
-    private Discursiva[] ListaDiscursiva = new Discursiva[10];
-    
+    Objetiva[] ListaObjetiva;
+    Discursiva[] ListaDiscursiva;
     
     /**
      * 
@@ -35,18 +34,26 @@ public class Prova {
         return cabecalho;
     }
     public String obtemProvaImpressao(){
-        String impressao = "";
-        System.out.print(obtemDetalhes());
+        String impressao = obtemDetalhes();
         
-        impressao += this.ListaDiscursiva;
-        impressao += this.ListaObjetiva;
         
+        for(int i = 0; i <this.ListaDiscursiva.length ; i++){
+            impressao += "\n"+this.ListaDiscursiva[i].retornaQuestao();
+ 
+        }
+        for(int i = 0; i <this.ListaObjetiva.length ; i++){
+                impressao += "\n"+this.ListaObjetiva[i].retornaQuestao();
+        }
         return impressao;
     }
     
+    
+    //Sets and Gets
+    
     public void setListaObjetiva(int indice, Objetiva[] novaLista){
-        this.ListaObjetiva[indice] = novaLista;
+        this.ListaObjetiva = novaLista;
     }
+    
     public Objetiva getListaObjetiva(int indice){
         return this.ListaObjetiva[indice];
     }

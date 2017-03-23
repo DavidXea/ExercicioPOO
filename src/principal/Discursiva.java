@@ -14,6 +14,13 @@ package principal;
 public class Discursiva extends Questao {
     private String criterioDeAvaliacao;
     
+    public String retornaQuestao(){
+        String impressao = "";
+        impressao += "\n\nPerguntas Discursivas : \nCriterio : "+this.getCriterioDeAvaliacao();
+        impressao += "\nPergunta : "+this.getPergunta();
+        return impressao;
+    }
+    
     public void setCriterioDeAvaliacao(String novoCriterio){
         this.criterioDeAvaliacao = novoCriterio;
     }

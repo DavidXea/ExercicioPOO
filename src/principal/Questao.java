@@ -9,10 +9,12 @@ package principal;
  *
  * @author david
  */
-public class Questao {
+public abstract class Questao {
     
     private String pergunta;
     private double peso;
+    
+    abstract String retornaQuestao();
     
     
     public void setPeso(double novoPeso){

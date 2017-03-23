@@ -10,8 +10,22 @@ package principal;
  * @author david
  */
 public class Objetiva extends Questao{
-    private String[] opcao;
+    private String[] opcao = new String[10];
     private int resCorreta;
+    
+    public String retornaQuestao(){
+            String impressao = "";
+            
+            impressao += "\n\nPerguntas Objetivas:\nPergunta : "+this.getPergunta();
+            impressao += "\nOpcões : ";
+            for(int j  = 0 ; j<5 ; j++){
+                impressao += "\nOpcão "+(j+1)+" : "+this.getOpcao(j);
+            }
+            return impressao;
+    }
+            
+    
+    
     
     public void setOpcao(String[] novaOpcao){
         this.opcao = novaOpcao;
