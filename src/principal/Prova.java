@@ -5,26 +5,18 @@
  */
 package principal;
 
-/**
- *
- * @author david
- * OLA MUNDO MALEFICO
- */
+import java.util.ArrayList;
+
 public class Prova {
-    
+    Objetiva ListaObjetiva;
+    Discursiva ListaDiscursiva;
     private String nomeDisciplina;
     private int peso;
     private String local;
     private String data;
-    Objetiva[] ListaObjetiva;
-    Discursiva[] ListaDiscursiva;
     
-    /**
-     * 
-     * @return 
-     */
-    
-    
+    ArrayList <Questao> questoes = new ArrayList<Questao>();
+
     public  String obtemDetalhes(){
         String cabecalho = "";
         cabecalho += "Nome:_______________"+"\n"+"Disciplina : "+this.nomeDisciplina+"\n";
@@ -35,14 +27,13 @@ public class Prova {
     }
     public String obtemProvaImpressao(){
         String impressao = obtemDetalhes();
-        
-        
-        for(int i = 0; i <this.ListaDiscursiva.length ; i++){
-            impressao += "\n"+this.ListaDiscursiva[i].retornaQuestao();
- 
-        }
-        for(int i = 0; i <this.ListaObjetiva.length ; i++){
-                impressao += "\n"+this.ListaObjetiva[i].retornaQuestao();
+
+        for(int i = 0; i <questoes.size() ; i++){
+            if(questoes.get(i) instanceof Discursiva){
+                impressao += "\n"+questoes.get(i).retornaQuestao();
+            }else if (questoes.get(i) instanceof Objetiva){
+                impressao += "\n"+questoes.get(i).retornaQuestao();
+            }
         }
         return impressao;
     }
@@ -50,19 +41,19 @@ public class Prova {
     
     //Sets and Gets
     
-    public void setListaObjetiva(int indice, Objetiva[] novaLista){
+    public void setListaObjetiva(int indice, Objetiva novaLista){
         this.ListaObjetiva = novaLista;
     }
     
     public Objetiva getListaObjetiva(int indice){
-        return this.ListaObjetiva[indice];
+        return this.ListaObjetiva;
     }
     
-    public void setListaDiscursiva(Discursiva[] novaLista){
+    public void setListaDiscursiva(Discursiva novaLista){
         this.ListaDiscursiva = novaLista;
     }
-    public Discursiva getListaDiscursiva(int indice){
-        return this.ListaDiscursiva[indice];
+    public Discursiva getListaDiscursiva(){
+        return this.ListaDiscursiva;
     }
     
     public void setNomeDisciplina(String novoNome){

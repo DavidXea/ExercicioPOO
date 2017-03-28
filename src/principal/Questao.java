@@ -11,6 +11,9 @@ package principal;
  */
 public abstract class Questao {
     
+    Objetiva[] ListaObjetiva;
+    Discursiva[] ListaDiscursiva;
+    
     private String pergunta;
     private double peso;
     
